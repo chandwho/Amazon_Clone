@@ -28,6 +28,13 @@ export default function Navbar() {
         navigate('/signin')
     }
   }  
+  // user returned from redux store is null initially 
+  //and order items were not rendering untill page is reloaded. 
+  // Navigates to Order page and reloads it to render Order items
+  function reloadPage(){
+    navigate('/orders')
+    location.reload()
+  }
 
   return (
     <nav className='bg-[#131921] px-4 py-2 flex flex-col md:flex-row gap-2 md:gap-5 items-center w-full fixed top-0 z-50'>
@@ -47,11 +54,13 @@ export default function Navbar() {
             <div className='cursor-pointer'
             onClick={handleLogOut}>
                 {/*Displays user's name and Sign Out if logged in else Sign In */}
-                <p className='text-[10px] md:text-xs'>Hello, {user?user?.email:''}</p>
+                <p className='text-[10px] md:text-xs'>Hello, {user?.email}</p>
                 <p className='text-[12px] md:text-[15px] font-semibold'>{user?'Sign Out':'Sign In'}</p>
             </div>
 
-            <Link to='/orders'>
+            <Link
+            onClick={reloadPage}
+            >
                 <div className='cursor-pointer'>
                     <p className='text-[10px] md:text-xs'>Returns</p>
                     <p className='text-[12px] md:text-[15px] font-semibold'>& Orders</p>

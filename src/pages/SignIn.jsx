@@ -14,16 +14,18 @@ export default function SignIn() {
     email: "", password: ""
   })
   const [error, setError] = React.useState("")
-
   //Submit login form
   const handleSubmit = async (e) => {
     e.preventDefault()
     try{
       //Logging in registered user
     const res = await signInWithEmailAndPassword(auth, userData.email, userData.password)
-    dispatch(authActions.signIn(res.user.email)) 
-    // dispatch(authActions.setUser(user))  
+    dispatch(authActions.signIn(res.user.email))  
+    // user returned from redux store is null initially 
+    //and order items were not rendering untill page is reloaded. 
+    // Navigates to Home page and reloads it to render Order items
     navigate('/')
+    location.reload()
     }catch(err) { setError(err.message)}
   }
 

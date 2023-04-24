@@ -17,7 +17,7 @@ const authSlice = createSlice({
       console.log(action.payload)
     },
     signIn(state, action) {
-      state.user = action.payload
+      state.user = action.payload 
     },
     logOut(state) {
       signOut(auth);

@@ -1,5 +1,4 @@
 import React from 'react'
-import { AiFillStar, AiOutlineStar } from 'react-icons/ai'
 import { useDispatch } from 'react-redux'
 import { cartActions } from '../store/cartSlice'
 

@@ -30,11 +30,11 @@ export default function Product(props) {
     let starArray=[]
     //Filled stars
     for(let i=0; i<props.rating;i++){
-        starArray[i] = <AiFillStar className='text-[#FFA41C]'/>
+        starArray[i] = <AiFillStar className='text-[#FFA41C]' key={`${i}`}/>
     }
     //Empty stars for 5 - rating
     for(let i=1; i<=5-props.rating;i++){
-        starArray[i+props.rating] = <AiOutlineStar className='text-[#FFA41C]'/>
+        starArray[i+props.rating] = <AiOutlineStar className='text-[#FFA41C]' key={`${5-i}`}/>
     }
 
   return (

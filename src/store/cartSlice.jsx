@@ -5,9 +5,9 @@ const cartSlice = createSlice({
   initialState: {
     cartItems: [],
     totalQuantity: 0,
-    counter: 0,
   },
   reducers: {
+    //Add items to cartItems
     addToCart(state, action) {
       const newItem = action.payload;
       const existingItem = state.cartItems.find((item) => item.id === newItem.id);
@@ -21,6 +21,7 @@ const cartSlice = createSlice({
         state.totalQuantity += 1;
       }
     },
+    //Remove items from cartItems
     removeFromCart(state, action) {
       const id = action.payload;
       console.log(id);
@@ -35,6 +36,7 @@ const cartSlice = createSlice({
         state.totalQuantity -= 1;
       }
     },
+    //Reset both states
     resetCart(state) {
       state.cartItems = [];
       state.totalQuantity = 0;

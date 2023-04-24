@@ -19,7 +19,7 @@ export default function App() {
   React.useEffect(() =>{
     onAuthStateChanged(auth, (currentUser) =>{
       if(currentUser){
-        console.log(currentUser)
+        // console.log(currentUser)
         // dispatch(authActions.setUser(currentUser))
         dispatch(authActions.signIn({
           email: currentUser.email,

@@ -1,4 +1,5 @@
 import React from 'react'
+import logo from '../assets/amazonIN_logo.png'
 import { Link } from 'react-router-dom'
 import {AiOutlineSearch} from 'react-icons/ai'
 import {FiShoppingCart} from 'react-icons/fi'
@@ -28,19 +29,12 @@ export default function Navbar() {
         navigate('/signin')
     }
   }  
-  // user returned from redux store is null initially 
-  //and order items were not rendering untill page is reloaded. 
-  // Navigates to Order page and reloads it to render Order items
-  function reloadPage(){
-    navigate('/orders')
-    location.reload()
-  }
 
   return (
     <nav className='bg-[#131921] px-4 py-2 flex flex-col md:flex-row gap-2 md:gap-5 items-center w-full fixed top-0 z-50'>
         {/*Amazon logo*/}
         <Link to='/'>
-            <img src="../src/assets/amazonIN_logo.png" alt="" 
+            <img src={logo} alt="" 
             className='h-5 md:h-[30px] cursor-pointer object-contain'/>
         </Link>
         {/*Search box*/}
@@ -58,9 +52,7 @@ export default function Navbar() {
                 <p className='text-[12px] md:text-[15px] font-semibold'>{user?'Sign Out':'Sign In'}</p>
             </div>
 
-            <Link
-            onClick={reloadPage}
-            >
+            <Link to='/orders'>
                 <div className='cursor-pointer'>
                     <p className='text-[10px] md:text-xs'>Returns</p>
                     <p className='text-[12px] md:text-[15px] font-semibold'>& Orders</p>

@@ -12,13 +12,14 @@ export default function Orders() {
   const [cartItems,setCartItems] = React.useState([])  
   const user = useSelector(state => state.auth.user)
     //Read data from firestore
-    const itemRef = doc(db, 'users', `${user?.email}`)
-    React.useEffect(() =>{
-    onSnapshot(itemRef, (doc) =>{
-        setCartItems(doc.data().cart)
-    })
-    },[user?.email])
+    const itemRef = doc(db, 'users', `${user?.email}`) 
 
+      React.useEffect( () =>{
+        onSnapshot(itemRef, async (doc) =>{
+          (setCartItems(doc.data().cart)) /*Receiving data from firebase and setting state*/ 
+        })
+      },[user?.email])
+      
   //Total price of cart
   const totalPrice = cartItems.reduce((total,item) =>{
     return(total + item.collectivePrice)
@@ -28,6 +29,7 @@ export default function Orders() {
   const orderedItem = cartItems.map(item =>{
     return(
       <OrderedItems
+        key = {item.id}
         id = {item.id}
         url = {item.url}
         brandName = {item.brandName}

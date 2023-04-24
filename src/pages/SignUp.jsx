@@ -1,4 +1,5 @@
 import React from 'react'
+import logo from '../assets/amazonblacklogo.png'
 import { Link, useNavigate  } from 'react-router-dom'
 import { useDispatch}  from 'react-redux'
 import { auth, db } from '../firebaseConfig';
@@ -48,7 +49,7 @@ export default function SignUp() {
     <div className='flex flex-col items-center gap-5 p-5 text-sm md:text-lg w-full'>
       {/*Logo*/}
       <Link to='/'>
-        <img src="../src/assets/amazonblacklogo.png" alt="" 
+        <img src={logo} alt="" 
         className='h-7 md:h-[40px] cursor-pointer object-contain'/>
       </Link>
       {/*Sign up form*/}

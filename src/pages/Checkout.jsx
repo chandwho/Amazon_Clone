@@ -41,10 +41,10 @@ export default function Checkout() {
   const saveOrders = () =>{
     //If user is logged in
     if(user){
-      cartItems.map((item) =>{
+      cartItems.map(async (item) =>{
         const itemRef = doc(db, 'users', `${user.email}`)
         // Addidng data to firestore
-        updateDoc(itemRef,
+        await updateDoc(itemRef,
           {cart: arrayUnion({
             id: item.id,
             url: item.url,
@@ -57,9 +57,10 @@ export default function Checkout() {
             })
           }
           //Reset redux cart state after order is placed
-        ).then(dispatch(cartActions.resetCart()))  
+        )
+        dispatch(cartActions.resetCart())
       })
-      alert('Hurray! Your order has been placed.')  
+      alert('Yay! Your order has been placed.')  
     }else{
       navigate('/signin')
     }

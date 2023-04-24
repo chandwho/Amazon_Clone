@@ -12,7 +12,7 @@ const authSlice = createSlice({
     signUp(state, action) {
       state.user = action.payload;
     },
-    //User sign in
+    //Use sign in
     signIn(state, action) {
       state.user = action.payload;
     },

@@ -2,12 +2,32 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import {AiOutlineSearch} from 'react-icons/ai'
 import {FiShoppingCart} from 'react-icons/fi'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
+import { authActions } from '../store/authSlice'
 
 export default function Navbar() {
- 
+
+  const user = useSelector(state => state.auth.user)
+  const navigate = useNavigate()
+  const dispatch = useDispatch()
+  console.log(user)
   // No. of itms in cart  
   const cartCount = useSelector(state => state.cart.totalQuantity)
+
+  const handleLogOut = async () =>{
+    if(user){
+        try{
+        dispatch(authActions.logOut())
+        navigate('/')
+        location.reload()
+        }catch(error){
+            alert(error)
+        }
+    }else{
+        navigate('/signin')
+    }
+  }  
 
   return (
     <nav className='bg-[#131921] px-4 py-2 flex flex-col md:flex-row gap-2 md:gap-5 items-center w-full fixed top-0 z-50'>
@@ -24,13 +44,14 @@ export default function Navbar() {
         </div>
         {/*Navlink section for sign-in, prime, returns and orders and cart*/}
         <div id='navlink-container' className='flex text-white gap-5 justify-evenly'>
-            <Link to='/signin'>
-                <div className='cursor-pointer'>
-                    <p className='text-[10px] md:text-xs'>Hello</p>
-                    <p className='text-[12px] md:text-[15px] font-semibold'>SignIn</p>
-                </div>
-            </Link>
-            <Link>
+            <div className='cursor-pointer'
+            onClick={handleLogOut}>
+                {/*Displays user's name and Sign Out if logged in else Sign In */}
+                <p className='text-[10px] md:text-xs'>Hello, {user?user?.email:''}</p>
+                <p className='text-[12px] md:text-[15px] font-semibold'>{user?'Sign Out':'Sign In'}</p>
+            </div>
+
+            <Link to='/orders'>
                 <div className='cursor-pointer'>
                     <p className='text-[10px] md:text-xs'>Returns</p>
                     <p className='text-[12px] md:text-[15px] font-semibold'>& Orders</p>

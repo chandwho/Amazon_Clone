@@ -1,9 +1,5 @@
-import React from 'react';
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import {
-  signOut,
-  onAuthStateChanged,
-} from 'firebase/auth';
+import { createSlice } from '@reduxjs/toolkit';
+import { signOut } from 'firebase/auth';
 import { auth } from '../firebaseConfig';
 
 const authSlice = createSlice({
@@ -12,19 +8,21 @@ const authSlice = createSlice({
     user: null,
   },
   reducers: {
+    //User sign up
     signUp(state, action) {
-      state.user = action.payload
-      console.log(action.payload)
+      state.user = action.payload;
     },
+    //User sign in
     signIn(state, action) {
-      state.user = action.payload 
+      state.user = action.payload;
     },
+    //User log out
     logOut(state) {
       signOut(auth);
-      state.user = null
+      state.user = null;
     },
     setUser(state, action) {
-      state.user = action.payload
+      state.user = action.payload;
     },
   },
 });

@@ -43,6 +43,7 @@ export default function Checkout() {
     if(user){
       cartItems.map((item) =>{
         const itemRef = doc(db, 'users', `${user.email}`)
+        // Addidng data to firestore
         updateDoc(itemRef,
           {cart: arrayUnion({
             id: item.id,
@@ -55,6 +56,7 @@ export default function Checkout() {
             collectivePrice: item.collectivePrice,
             })
           }
+          //Reset redux cart state after order is placed
         ).then(dispatch(cartActions.resetCart()))  
       })
       alert('Hurray! Your order has been placed.')  

@@ -28,7 +28,7 @@ export default function SignUp() {
       email: res.user.email,
       name: userData.name
     }))
-    //Creating doc to store data for each user  
+    //Creating firebase doc to store data for each user  
     await setDoc(doc(db, 'users', userData.email),
     {cart: []})   
     navigate('/')
@@ -51,7 +51,7 @@ export default function SignUp() {
         <img src="../src/assets/amazonblacklogo.png" alt="" 
         className='h-7 md:h-[40px] cursor-pointer object-contain'/>
       </Link>
-      {/*Sign in form*/}
+      {/*Sign up form*/}
       <form 
         onSubmit={handleSubmit}
         className='flex flex-col py-6 px-10 border rounded w-full md:w-[400px]'>

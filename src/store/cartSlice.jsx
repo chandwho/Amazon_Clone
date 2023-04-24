@@ -26,7 +26,7 @@ const cartSlice = createSlice({
       console.log(id);
       const removedItem = state.cartItems.find((item) => id === item.id);
 
-      if (removedItem.quantity === 1) {
+      if (removedItem.quantity === 1) { 
         state.cartItems = state.cartItems.filter((item) => item.id !== id);
         state.totalQuantity -= 1;
       } else {

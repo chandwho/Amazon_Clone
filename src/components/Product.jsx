@@ -1,15 +1,19 @@
 import React from 'react'
 import { AiFillStar, AiOutlineStar } from 'react-icons/ai'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { cartActions } from '../store/cartSlice'
+import {doc, updateDoc, arrayUnion, setDoc} from 'firebase/firestore'
+import { db } from '../firebaseConfig'
 
 export default function Product(props) {
 
     const dispatch = useDispatch()
-
-    const addToCart = () =>{
+    const user = useSelector(state => state.auth.user)
+    // const itemData = useSelector(state => state.cart)
+    //Adding item to cart
+    const addToCart = async () =>{
         dispatch(cartActions.addToCart(
-            {
+            {   key: props.key,
                 id: props.id,
                 url: props.url,
                 brandName: props.brandName,
@@ -36,7 +40,7 @@ export default function Product(props) {
   return (
     <div className=' relative border bg-white  rounded shadow-xl w-full h-[320px] md:h-[430px]'>
         {/*Product image*/}
-        <div className='w-full h-[50%] md:h-[60%] flex justify-center border-b p-3'>
+        <div className='w-full h-[50%] lg:h-[55%] flex justify-center border-b p-3'>
             <img src={props.url} alt="Product Image" 
             className='cursor-pointer rounded-t object-contain '/>
         </div>

@@ -9,6 +9,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import {onAuthStateChanged} from 'firebase/auth';
 import { auth } from './firebaseConfig';
 import Orders from './pages/Orders'
+import Footer from './components/Footer'
 
 export default function App() {
 
@@ -34,7 +35,7 @@ export default function App() {
 
 
   return (
-    <div>
+    <div className='min-h-full flex flex-col justify-between'>
       <Routes>
         <Route path='/' element={<Home/>}>
         </Route>
@@ -43,6 +44,7 @@ export default function App() {
         <Route path='/checkout' element={<Checkout/>}/>
         <Route path='/orders' element={<Orders/>}/>
       </Routes>
+      <Footer/>
     </div>
   )
 }

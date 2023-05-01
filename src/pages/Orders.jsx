@@ -5,6 +5,7 @@ import OrderedItems from '../components/OrderedItems'
 import Navbar from '../components/Navbar'
 import { db } from '../firebaseConfig'
 import { doc, onSnapshot } from 'firebase/firestore'
+import Footer from '../components/Footer'
 
 
 export default function Orders() {
@@ -74,7 +75,7 @@ export default function Orders() {
                 {orderedItem}
               </div>
               {/*Section to display total price of cart*/}
-              <div className='p-5 flex flex-col justify-center items-center gap-3 md:w-[23%] md:h-[220px] border bg-white rounded shadow-xl'>
+              <div className='sticky top-20 p-5 flex flex-col justify-center items-center gap-3 md:w-[23%] md:min-h-[220px] border bg-white rounded shadow-xl'>
                 <p className='text-[17px] md:text-[20px]'>Total: <strong>₹{totalPrice}</strong></p>
               </div>
             </div>

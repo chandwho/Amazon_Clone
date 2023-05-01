@@ -6,6 +6,7 @@ import Navbar from '../components/Navbar'
 import { db } from '../firebaseConfig'
 import { doc, updateDoc, arrayUnion } from 'firebase/firestore'
 import { cartActions } from '../store/cartSlice'
+import Footer from '../components/Footer'
 
 export default function Checkout() {
 
@@ -92,13 +93,13 @@ export default function Checkout() {
           // When cart has items
           <div>
             <h1 className='text-xl md:text-3xl font-semibold mb-7'>Shopping Cart</h1>
-            <div className='flex flex-col items-center md:items-start md:h-[220px] md:flex-row gap-5'>
+            <div className='flex flex-col items-center md:items-start md:min-h-[220px] md:flex-row gap-5'>
               {/* Cart Items*/}
               <div className='flex flex-col gap-3 w-[75%]'>
                 {checkoutItems}
               </div>
               {/*Section to display total price of cart*/}
-              <div className='p-5 flex flex-col justify-center items-center gap-3 md:w-[23%] md:h-[220px] border bg-white rounded shadow-xl'>
+              <div className='sticky top-20 p-5 flex flex-col justify-center items-center gap-3 md:w-[23%] md:h-[220px] border bg-white rounded shadow-xl'>
                 <p className='text-[17px] md:text-[20px]'>Subtotal of ({cartCount} items): <strong>₹{totalPrice}</strong></p>
                 <button 
                 onClick={saveOrders}

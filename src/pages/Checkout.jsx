@@ -99,7 +99,7 @@ export default function Checkout() {
                 {checkoutItems}
               </div>
               {/*Section to display total price of cart*/}
-              <div className='sticky top-20 p-5 flex flex-col justify-center items-center gap-3 md:w-[23%] md:h-[220px] border bg-white rounded shadow-xl'>
+              <div className='sticky top-[94px] p-5 flex flex-col justify-center items-center gap-3 md:w-[23%] md:h-[220px] border bg-white rounded shadow-xl'>
                 <p className='text-[17px] md:text-[20px]'>Subtotal of ({cartCount} items): <strong>₹{totalPrice}</strong></p>
                 <button 
                 onClick={saveOrders}
